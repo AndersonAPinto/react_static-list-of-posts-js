@@ -5,8 +5,8 @@ import commentsFromServer from './api/comments.json';
 import usersFromServer from './api/users.json';
 import { PostList } from './components/PostList/PostList';
 
-// funciton for take all data comments
-function getCommentbyId(postId) {
+// function for take all data comments
+function getCommentsByPostId(postId) {
   return commentsFromServer.filter(comment => comment.postId === postId);
 }
 
@@ -18,7 +18,7 @@ function getUserbyId(userId) {
 export const posts = postsFromServer.map(post => ({
   ...post,
   user: getUserbyId(post.userId),
-  comments: getCommentbyId(post.id),
+  comments: getCommentsByPostId(post.id),
 }));
 
 export const App = () => (
